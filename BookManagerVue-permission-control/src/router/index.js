@@ -151,6 +151,26 @@ export const asyncRoutes = [
     ]
   },
 
+  {
+    path: '/ai',
+    name: 'Ai',
+    component: Layout,
+    redirect: '/ai/assistant',
+    children: [
+      {
+        path: 'assistant',
+        name: 'AiAssistant',
+        component: () => import('@/views/ai/index'),
+        meta: {
+          title: 'AI智能助手',
+          icon: 'el-icon-chat-dot-round',
+          roles: ['admin', 'reader'],
+          noCache: true
+        }
+      }
+    ]
+  },
+
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
