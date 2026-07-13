@@ -88,7 +88,7 @@
     <el-dialog title="选择用户" :visible.sync="dialogFormVisible2" width="400px">
       <el-form :model="form2">
         <el-form-item label="用户名" prop="userid" label-width="80px">
-              <el-select v-model="form2.booktypeid" placeholder="请选择用户">
+              <el-select v-model="form2.userid" placeholder="请选择用户">
                 <el-option
                     v-for="item in userData"
                     :key="item.userid"

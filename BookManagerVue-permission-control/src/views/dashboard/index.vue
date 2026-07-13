@@ -1,22 +1,40 @@
 <template>
   <div class="dashboard-container">
-    <div title="欢迎页面" style="padding: 50px; overflow: hidden; color: #409eff;font: lighter 16px 'Lucida Sans Unicode';"
-         data-options="iconCls:'icon-heart',plain:true">
-        <b style="font-size: 36px; line-height: 30px; height: 30px;">欢迎使用图书管理系统</b>
-        <p>开发人员: 江苏第二师范学院 数学与信息技术学院 王鹏</p>
-        <p>联系方式-Email: 894176237@qq.com</p>
-        <p>联系方式-QQ: 894176237</p>
-        <p>开发周期: 2021/11/8 —— 2021/11/13</p>
-        <hr/>
-        <b>项目开发环境介绍</b>
-        <p>操作系统: Windows 10 home</p>
-        <p>开发工具: Intellij IDEA 2021.2.1(Ultimate Edition)</p>
-        <p>Java版本: 1.8.0</p>
-        <p>服务器: Tomcat 8.5</p>
-        <p>数据库: MySQL 5.7</p>
-        <p>前端技术: HTML+CSS+JavaScript+Vue+Axios+ElementUI</p>
-        <p>后端技术: Java+SpringBoot+MyBatis+MySQL</p>
-    </div>
+    <el-row :gutter="20">
+      <el-col :xs="24" :md="16">
+        <el-card class="welcome-card" shadow="hover">
+          <div class="welcome-title">欢迎使用图书管理系统</div>
+          <div class="welcome-subtitle">当前登录用户：{{ name }}（{{ roles[0] === 'admin' ? '管理员' : '读者' }}）</div>
+          <el-divider />
+          <el-steps :active="4" finish-status="success" simple>
+            <el-step title="查询图书" />
+            <el-step title="提交借阅" />
+            <el-step title="查看记录" />
+            <el-step title="归还图书" />
+          </el-steps>
+          <div class="guide-grid">
+            <div v-for="item in guideList" :key="item.title" class="guide-item">
+              <i :class="item.icon" />
+              <div>
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.desc }}</p>
+              </div>
+            </div>
+          </div>
+        </el-card>
+      </el-col>
+      <el-col :xs="24" :md="8">
+        <el-card class="tips-card" shadow="hover">
+          <div slot="header">验收演示建议</div>
+          <ul>
+            <li>管理员维护图书、分类与用户。</li>
+            <li>读者搜索图书并完成借阅。</li>
+            <li>在借阅信息管理中完成归还闭环。</li>
+            <li>进入 AI 智能助手演示推荐与规则问答。</li>
+          </ul>
+        </el-card>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -26,11 +44,35 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'Dashboard',
   computed: {
-    ...mapGetters([
-      'id',
-      'name',
-      'roles'
-    ])
+    ...mapGetters(['id', 'name', 'roles']),
+    guideList() {
+      const common = [
+        { title: '图书检索', desc: '按书名、作者、分类筛选馆藏图书，查看封面、简介与借阅状态。', icon: 'el-icon-search' },
+        { title: '借阅记录', desc: '查看借阅时间、归还时间，完成借阅与归还业务闭环。', icon: 'el-icon-notebook-2' },
+        { title: 'AI 智能助手', desc: '输入自然语言问题，获取图书推荐、馆藏匹配和借阅规则说明。', icon: 'el-icon-chat-dot-round' }
+      ]
+      if (this.roles[0] === 'admin') {
+        return [
+          { title: '后台管理', desc: '维护图书信息、图书分类、用户账号，并可代读者办理借阅。', icon: 'el-icon-s-tools' },
+          ...common
+        ]
+      }
+      return common
+    }
   }
 }
 </script>
+
+<style scoped>
+.dashboard-container { padding: 24px; background: #f5f7fb; min-height: calc(100vh - 84px); }
+.welcome-card, .tips-card { border: 0; border-radius: 18px; }
+.welcome-card { background: linear-gradient(135deg, #ffffff 0%, #ecf5ff 100%); }
+.welcome-title { font-size: 34px; font-weight: 700; color: #1f2d3d; }
+.welcome-subtitle { margin-top: 12px; color: #5f6f89; font-size: 16px; }
+.guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-top: 22px; }
+.guide-item { display: flex; gap: 14px; padding: 18px; border-radius: 14px; background: rgba(255,255,255,.86); box-shadow: 0 8px 20px rgba(64,158,255,.08); }
+.guide-item i { font-size: 34px; color: #409eff; margin-top: 4px; }
+.guide-item h3 { margin: 0 0 8px; color: #303133; }
+.guide-item p { margin: 0; color: #606266; line-height: 1.7; }
+.tips-card ul { margin: 0; padding-left: 20px; color: #606266; line-height: 2; }
+</style>
