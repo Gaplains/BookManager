@@ -2,6 +2,8 @@ import { login, logout, getInfo } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import { resetRouter } from '@/router'
 
+const defaultAvatar = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80"><rect width="80" height="80" rx="40" fill="%234096ff"/><circle cx="40" cy="30" r="14" fill="white"/><path d="M18 68c4-15 15-24 22-24s18 9 22 24" fill="white"/></svg>'
+
 const getDefaultState = () => {
   return {
     token: getToken(),
@@ -69,7 +71,7 @@ const actions = {
         if (data.isadmin === 1) data['roles'] = ['admin']
         else data['roles'] = ['reader']
 
-        data['avatar'] = 'http://wangpeng-imgsubmit.oss-cn-hangzhou.aliyuncs.com/img/202112251517869.jpg'
+        data['avatar'] = data.avatar || defaultAvatar
 
         const { userid, roles, username, avatar } = data
 
