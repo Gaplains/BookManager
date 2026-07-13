@@ -6,10 +6,10 @@
 
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
-        
         <div class="avatar-wrapper">
-          <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
-          <span class="user-name"> {{name}} </span>
+          <img v-if="avatar" :src="avatar" class="user-avatar" alt="用户头像">
+          <span v-else class="user-avatar user-avatar-placeholder">{{ nameInitial }}</span>
+          <span class="user-name"> {{ name }} </span>
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
@@ -42,7 +42,10 @@ export default {
       'sidebar',
       'avatar',
       'name'
-    ])
+    ]),
+    nameInitial() {
+      return this.name ? this.name.slice(0, 1).toUpperCase() : 'U'
+    }
   },
   methods: {
     toggleSideBar() {
@@ -121,6 +124,16 @@ export default {
           width: 40px;
           height: 40px;
           border-radius: 10px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          vertical-align: middle;
+        }
+
+        .user-avatar-placeholder {
+          background: #409eff;
+          color: #fff;
+          font-weight: 600;
         }
 
         .user-name {
