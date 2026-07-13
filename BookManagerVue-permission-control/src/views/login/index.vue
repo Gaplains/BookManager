@@ -59,17 +59,6 @@
         <el-button :loading="loading" type="success" style="width: 48%; float: right;" @click.native.prevent="handleRegister">注册</el-button>
       </div>
 
-      <!-- 提示 -->
-      <div>
-        <div class="tips">
-          <span style="margin-right:20px;">管理员 username: admin</span>
-          <span> password: admin</span>
-        </div>
-        <div class="tips">
-          <span style="margin-right:20px;">读者 username: wangpeng</span>
-          <span> password: 123456</span>
-        </div>
-      </div>
     </el-form>
   </div>
 </template>
