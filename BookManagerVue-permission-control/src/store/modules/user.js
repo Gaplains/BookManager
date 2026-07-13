@@ -42,8 +42,8 @@ const actions = {
     return new Promise((resolve, reject) => {
       login({ username: username.trim(), userpassword: password, isadmin: isadmin }).then(response => {
         const { status, message, data } = response
-        
-        if(status !== 200) {
+
+        if (status !== 200) {
           reject(message)
         }
 
@@ -69,8 +69,7 @@ const actions = {
         if (data.isadmin === 1) data['roles'] = ['admin']
         else data['roles'] = ['reader']
 
-        data['avatar'] = 'http://wangpeng-imgsubmit.oss-cn-hangzhou.aliyuncs.com/img/202112251517869.jpg'
-
+        data['avatar'] = data.avatar || ''
         const { userid, roles, username, avatar } = data
 
         // roles must be a non-empty array
