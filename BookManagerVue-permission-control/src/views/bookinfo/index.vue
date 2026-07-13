@@ -324,7 +324,7 @@ export default {
         booktypeid: 1,
         bookdesc: '为闺阁立传',
         isborrowed: 0,
-        bookimg: 'http://wangpeng-imgsubmit.oss-cn-hangzhou.aliyuncs.com/img/202111131322401.jpg'
+        bookimg: ''
       }
       // 显示表单框
       this.dialogFormVisible = true
