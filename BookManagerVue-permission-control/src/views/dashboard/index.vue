@@ -23,17 +23,6 @@
           </div>
         </el-card>
       </el-col>
-      <el-col :xs="24" :md="8">
-        <el-card class="tips-card" shadow="hover">
-          <div slot="header">验收演示建议</div>
-          <ul>
-            <li>管理员维护图书、分类与用户。</li>
-            <li>读者搜索图书并完成借阅。</li>
-            <li>在借阅信息管理中完成归还闭环。</li>
-            <li>进入 AI 智能助手演示推荐与规则问答。</li>
-          </ul>
-        </el-card>
-      </el-col>
     </el-row>
   </div>
 </template>
