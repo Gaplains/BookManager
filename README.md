@@ -34,6 +34,7 @@ BookManager/
 | 接口风格 | 前后端分离 REST API，统一前缀 `http://localhost:8092/BookManager/` |
 | AI 功能 | 本地规则 + 简单 NLP 模拟的智能图书助手，可扩展为通义千问、DeepSeek、OpenAI API、Dify/Coze |
 | 开发工具 | IntelliJ IDEA、Navicat、Node.js、Maven、Git |
+| 版本控制 | Git网页端及桌面端 可于`https://github.com/Gaplains/BookManager`查看 |
 
 ## 三、运行环境
 
