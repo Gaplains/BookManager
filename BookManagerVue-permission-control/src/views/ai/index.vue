@@ -2,7 +2,6 @@
   <div class="app-container ai-page">
     <el-card class="hero" shadow="never">
       <div class="hero-title">AI 智能图书助手</div>
-      <div class="hero-subtitle">可咨询图书推荐、馆藏搜索、借阅/归还规则。当前为本地规则 + 简单 NLP 模拟实现，便于验收现场离线演示。</div>
       <el-input v-model="question" class="question-input" placeholder="例如：有没有人工智能入门书籍？Java 初学者推荐什么？如何归还图书？" @keyup.enter.native="handleAsk">
         <el-button slot="append" type="primary" :loading="loading" @click="handleAsk">提问</el-button>
       </el-input>
