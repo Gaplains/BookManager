@@ -60,7 +60,7 @@ BookManager/
    - `spring.datasource.url=jdbc:mysql://localhost:3306/book_manager?useAffectedRows=true`
    - `spring.datasource.username=root`
    - `spring.datasource.password=你的MySQL密码`
-3. 等待 Maven 依赖下载完成。
+3. 下载redis，打开命令提示符运行`redis-server --port 6391`。
 4. 运行启动类：`com.wangpeng.bms.BookManagerApplication`。
 5. 后端默认端口：`8092`，上下文路径：`/BookManager`。
 6. 健康验证示例：访问 `http://localhost:8092/BookManager/bookInfo/getCount`，能返回数字表示后端和数据库连接正常。
@@ -74,7 +74,6 @@ npm run dev
 ```
 
 启动成功后访问前端提示的本地地址，通常为 `http://localhost:9528` 或 `http://localhost:8080`。前端接口基地址在 `src/utils/request.js` 中配置为 `http://localhost:8092/BookManager/`。
-如改动后端代码，前端同步需先切换到目标路径然后npm run build:prod
 
 ## 七、测试账号
 
